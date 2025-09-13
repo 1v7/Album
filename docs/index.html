@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <title>Album</title>
+  <style>
+    body { font-family: sans-serif; }
+    #gallery { display: flex; flex-wrap: wrap; }
+    img { max-width: 150px; margin: 5px; border: 1px solid #ccc; }
+  </style>
+</head>
+<body>
+  <div id="gallery"></div>
+
+  <script>
+    let current = 1;
+    const gallery = document.getElementById('gallery');
+
+    const timer = setInterval(() => {
+      const jpgImg = new Image();
+      const pngImg = new Image();
+
+      jpgImg.src = 'p/'+current + '.jpg';
+      jpgImg.alt = 'JPG ' + current;
+ 
+      jpgImg.onload = () => {
+        gallery.appendChild(jpgImg);
+        current++;
+      };
+ 
+      jpgImg.onerror = () => {
+        pngImg.src =  'p/'+current + '.png';
+        pngImg.alt = 'PNG ' + current;
+
+        pngImg.onload = () => {
+          gallery.appendChild(pngImg);
+          current++;
+        };
+
+        // PNG 也失败，停止定时器
+        pngImg.onerror = () => {
+          console.log(current + ' jpg/png 图片都不存在，停止加载');
+          clearInterval(timer);
+        };
+      };
+
+    }, 300); 
+  </script>
+</body>
+</html>
