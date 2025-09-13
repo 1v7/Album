@@ -20,17 +20,15 @@
       const jpgImg = new Image();
       const pngImg = new Image();
 
-      jpgImg.src = current + '.jpg';
+      jpgImg.src = 'p/'+current + '.jpg';
       jpgImg.alt = 'JPG ' + current;
-
-      // JPG 加载成功
+ 
       jpgImg.onload = () => {
         gallery.appendChild(jpgImg);
       };
-
-      // JPG 加载失败，尝试 PNG
+ 
       jpgImg.onerror = () => {
-        pngImg.src = current + '.png';
+        pngImg.src =  'p/'+current + '.png';
         pngImg.alt = 'PNG ' + current;
 
         pngImg.onload = () => {
