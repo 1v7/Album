@@ -25,6 +25,7 @@
  
       jpgImg.onload = () => {
         gallery.appendChild(jpgImg);
+        current++;
       };
  
       jpgImg.onerror = () => {
@@ -33,6 +34,7 @@
 
         pngImg.onload = () => {
           gallery.appendChild(pngImg);
+          current++;
         };
 
         // PNG 也失败，停止定时器
@@ -42,8 +44,7 @@
         };
       };
 
-      current++;
-    }, 100); 
+    }, 300); 
   </script>
 </body>
 </html>
