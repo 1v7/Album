@@ -17,9 +17,21 @@
         files.forEach(file => {
 
             if (file.name.match(/\.(jpg|jpeg|png|gif)$/i)) {
+              
+    
+
+            const link = document.createElement("a");
+            link.href = "p/" + file.name;
+            link.target = "_blank";   
+
             const img = document.createElement("img");
-            img.src ="p/"+file.name;
-            gallery.appendChild(img);
+            img.src = "p/" + file.name;
+
+            link.appendChild(img);
+            gallery.appendChild(link);
+
+
+              
           } else if (file.name.match(/\.mp4$/i)) {
             const video = document.createElement("video");
             video.src = "p/"+file.name;
