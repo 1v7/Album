@@ -16,11 +16,20 @@
       .then(files => {
         const gallery = document.getElementById("gallery");
         files.forEach(file => {
-          if (file.name.match(/\.(jpg|jpeg|png|gif)$/i)) {
+
+            if (file.name.match(/\.(jpg|jpeg|png|gif)$/i)) {
             const img = document.createElement("img");
             img.src = file.download_url;
             gallery.appendChild(img);
+          } else if (file.name.match(/\.mp4$/i)) {
+            const video = document.createElement("video");
+            video.src = file.download_url;
+            video.controls = true;
+            video.preload = "metadata";
+            gallery.appendChild(video);
           }
+
+          
         });
       });
   </script>
